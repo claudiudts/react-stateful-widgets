@@ -46,56 +46,46 @@ STEP 6:
   This click handler needs to use 'setCount' to set the 'count' to be zero again.
 */
 
-import React, { useState } from 'react'; /* STEP 0 */
+ import React, { useState } from 'react';
 
-export default function Counter() {
-  const [count, setCount] = useState(0)
-  const [isEven, setIsEven] = useState(0)
+ export default function Counter() {
+ const [count, setCount] = useState(0);
+ const [isEven, setIsEven] = useState(0)
 
-  const increment = () => {
-    let newCount = count + 1;
-    setCount(newCount);
-    if (newCount % 2 != 0) {
-      setIsEven(false);
-    } else {
-      setIsEven(true);
-    }
-  };
 
-  const decrement = () => {
-    let newCount = count - 1;
-    setCount(newCount);
-    if (newCount % 2 != 0) {
-      setIsEven(false);
-    } else {
-      setIsEven(true);
-    }
-  };
+ const increment = () => {
+   let newCount = count + 1;
+   setCount(newCount);
+ };
 
-  const reset = () => {
-    let newCount = 0;
-    setCount(newCount);
-    setIsEven(true)
-  };
 
-  const style = {
-    fontSize: '1.5em',
-    marginBottom: '0.3em',
-    color: 'royalblue', /* STEP 2 */
-  };
+ const decrement = () => {
+  let newCount = count - 1;
+  setCount(newCount);
+ };
 
-  return (
-    <div className='widget-counter container'>
-      <h2>Counter</h2>
-      <div id='count' 
-        style={isEven == true ? { color: 'royalblue'} : { color: 'crimson'}}>
-        Number {count} is {isEven == true ? 'even' : 'odd'} {/* STEP 3 */}
-      </div>
-      <div>
-        <button id='increment' onClick={increment}>Increment</button>
-        <button id='decrement' onClick={decrement}>Decrement</button>
-        <button id='resetCount' onClick={reset}>Reset</button>
-      </div>
-    </div>
+ const resetCount = () => {
+  let newCount = 0;
+  setCount(newCount);
+ };
+
+ const style = {
+  fontSize: '1.5em',
+  marginBottom: '0.3em',
+  color: 'royalblue'
+ };
+
+ return (
+   <div className='widget-counter container'>
+     <h2>Counter</h2>
+     <div id='count' style={isEven == true ? { color: 'royalblue'} : { color: 'crimson'}}>
+       The number {count} is {isEven == true ? 'even' : 'odd'}
+     </div>
+     <div>
+       <button id='increment' onClick={increment}>Increase</button>
+       <button id='reset' onClick={resetCount}>RESET</button>
+       <button id='resetCount' onClick={decrement}>Decrease</button>
+     </div>
+   </div>
   );
-}
+ }
