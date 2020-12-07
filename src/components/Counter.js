@@ -50,41 +50,52 @@ STEP 6:
 
  export default function Counter() {
  const [count, setCount] = useState(0);
- const [isEven, setIsEven] = useState(0)
+ const [isEven, setIsEven] = useState(true)
 
 
  const increment = () => {
    let newCount = count + 1;
    setCount(newCount);
+   if(newCount % 2 != 0) {
+     setIsEven(false);
+   } else {
+     setIsEven(true);
+   }
  };
 
 
  const decrement = () => {
   let newCount = count - 1;
   setCount(newCount);
+  if(newCount % 2 != 0) {
+    setIsEven(false);
+  } else {
+    setIsEven(true);
+  }
  };
 
  const resetCount = () => {
   let newCount = 0;
   setCount(newCount);
+  setIsEven(true)
  };
 
  const style = {
   fontSize: '1.5em',
   marginBottom: '0.3em',
-  color: 'royalblue'
+  // color: even ? 'royalblue' : 'crimson'
  };
 
  return (
    <div className='widget-counter container'>
      <h2>Counter</h2>
      <div id='count' style={isEven == true ? { color: 'royalblue'} : { color: 'crimson'}}>
-       The number {count} is {isEven == true ? 'even' : 'odd'}
+        Number {count} is {isEven == true ? 'even' : 'odd'}
      </div>
      <div>
        <button id='increment' onClick={increment}>Increase</button>
-       <button id='reset' onClick={resetCount}>RESET</button>
-       <button id='resetCount' onClick={decrement}>Decrease</button>
+       <button id='resetCount' onClick={resetCount}>RESET</button>
+       <button id='decrement' onClick={decrement}>Decrease</button>
      </div>
    </div>
   );
